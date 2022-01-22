@@ -27,7 +27,9 @@ namespace ItemDisplayToggle
                 true,
                 "If true, enables display of items on characters."
             );
-            ItemEnable.SettingChanged += (o, e) => ToggleItemDisplay();
+            On.RoR2.CharacterModel.EnableItemDisplay += (orig, self, itemIndex) => {
+                if(ItemEnable.Value) orig(self, itemIndex);
+            };
 
             EquipEnable = Config.Bind<bool>(
                 "Item Display",
@@ -35,24 +37,8 @@ namespace ItemDisplayToggle
                 true,
                 "If true, enables display of equipment on characters."
             );
-            EquipEnable.SettingChanged += (o, e) => ToggleEquipmentDisplay();
-        }
-
-        // Changing the game functions
-        public void ToggleItemDisplay()
-        {
-            On.RoR2.CharacterModel.EnableItemDisplay += (orig, self, itemIndex) =>
-            {
-                RoR2.ItemIndex item = ItemEnable.Value ? itemIndex : RoR2.ItemIndex.None;
-                orig(self, itemIndex);
-            };
-        }
-        public void ToggleEquipmentDisplay()
-        {
-            On.RoR2.CharacterModel.SetEquipmentDisplay += (orig, self, newEquipIndex) =>
-            {
-                RoR2.EquipmentIndex equip = EquipEnable.Value ? newEquipIndex : RoR2.EquipmentIndex.None;
-                orig(self, newEquipIndex);
+            On.RoR2.CharacterModel.SetEquipmentDisplay += (orig, self, newEquipIndex) => {
+                if(EquipEnable.Value) orig(self, newEquipIndex);
             };
         }
     }
