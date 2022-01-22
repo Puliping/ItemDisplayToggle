@@ -1,7 +1,7 @@
 ﻿{
 	"name": "ItemDisplayToggle",
 	"version_number": "0.1.0",
-	"website_url": "",
+	"website_url": "https://github.com/Puliping/ItemDisplayToggle",
 	"description": "Simple (configurable!) mod to enable/disable item display on your characters.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9"
