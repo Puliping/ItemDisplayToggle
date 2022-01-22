@@ -12,7 +12,7 @@ namespace ItemDisplayToggle
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Puliping";
         public const string PluginName = "ItemDisplayToggle";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         // Config entries
         public static ConfigEntry<bool> ItemEnable { get; set; }
